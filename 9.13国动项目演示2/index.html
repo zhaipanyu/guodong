@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>演示</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <style>
+        body,
+        li,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgba(17, 0, 67, 1);
+
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        h1 {
+            color: #fff;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .content {
+            /* border: 1px solid red; */
+            position: absolute;
+            /*垂直居中*/
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* margin: 20px auto; */
+            width: 1260px;
+            height: 425px;
+            /* padding: 15px 0;   */
+        }
+
+        .clearfix {
+            /*清除浮动*/
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .left-content {
+            /*左边*/
+            /* border: 1px solid orange; */
+            width: 1060px;
+            height: 100%;
+            position: relative;
+        }
+
+        .leftTop-content {
+            /*左上*/
+            /* border: 1px solid pink; */
+            width: 1060px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .content1 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            left: 0;
+            top: 0;
+            background-color: rgb(19, 135, 179);
+        }
+        .content1:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+        .content2 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            left: 420px;
+            top: 0;
+            background-color: rgb(8, 53, 147);
+        }
+        .content2:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+        .content3 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 840px;
+            top: 0;
+            background-color: rgb(19, 135, 179);
+        }
+        .content3:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+
+        .leftbottom-content {
+            /*左下*/
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 1060px;
+            height: 200px;
+            /* border: 1px solid #000; */
+        }
+
+        .content4 {
+            position: absolute;
+            width: 190px;
+            height: 200px;
+            left: 0;
+            bottom: 0;
+            background-color: rgb(8, 53, 147);
+        }
+        .content4:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+        .content5 {
+            position: absolute;
+            width: 190px;
+            height: 200px;
+            left: 210px;
+            bottom: 0;
+            background-color: rgb(164, 8, 54);
+        }
+        .content5:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+        .content6 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            left: 420px;
+            bottom: 0;
+            background-color: rgb(80, 41, 170);
+        }
+        .content6:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+        .content7 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 840px;
+            bottom: 0;
+            background-color: rgb(22, 149, 6);
+        }
+        .content7:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+
+        .right-content {
+            /*右边*/
+            /* border: 1px solid purple; */
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background-color: rgb(80, 41, 170);
+        }
+        .right-content:hover{
+            transform: scale(1.2,1.2);
+            transition: all 0.5s;
+            z-index: 100;
+             box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.7) ;
+        }
+        a {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            /* border-radius: 10px; */
+            /* border: 1px solid red; */
+            /* box-shadow: 0px 0px 1px 2px rgba(255, 255, 255, 0.5) ; */
+
+        }
+       
+        img {
+            /* border: 1px solid #000; */
+            width: 160px;
+            height: 170px;
+            position: absolute;
+            /*垂直居中*/
+            top: 59%;
+            left: 55%;
+            /*考虑到图片本身不居中所以要50%改为55%*/
+            transform: translate(-50%, -50%);
+        }
+
+        span {
+            color: #fff;
+            position: absolute;
+            bottom: 5px;
+            left: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GD-IOT应用展示界面</h1>
+    <div class="content clearfix">
+        <div class="left-content clearfix">
+            <div class="leftTop-content clearfix">
+                <div class="content1"><a href=""><img src="imags/shuibiao.png" alt=""><span>水表远程抄表</span></a></div>
+                <div class="content2"><a href=""><img src="imags/wenshidu.png" alt=""><span>温湿度监测</span></a></div>
+                <div class="content3"><a href=""><img src="imags/shiwai.png" alt=""><span>户外人员定位</span></a></div>
+            </div>
+            <div class="leftbottom-content clearfix">
+                <div class="content4"><a href=""><img src="imags/shinei.png" alt=""><span>室内人员定位</span></a></div>
+                <div class="content5"><a href=""><img src="imags/keranqiti.png" alt=""><span>可燃气体报警</span></a></div>
+                <div class="content6"><a href=""><img src="imags/ranqi.png" alt=""><span>气表远程抄表</span></a></div>
+                <div class="content7"><a href=""><img src="imags/yangan.png" alt=""><span>烟雾报警</span></a></div>
+            </div>
+        </div>
+        <!--class=""left-content""-->
+
+        <div class="right-content">
+            <a href=""><img src="imags/tingche.png" alt=""><span>停车位监测</span></a>
+        </div>
+    </div>
+</body>
+
+</html>

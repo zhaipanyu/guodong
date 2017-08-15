@@ -1,0 +1,82 @@
+body,
+li,
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgba(23, 66, 139, 0.9);
+    box-sizing: border-box;
+}
+ul,ol{
+    list-style: none;
+   
+} 
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+h1{
+    color: #fff;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.content{
+    border: 1px solid red;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    /* margin: 20px auto; */
+    width: 1260px;
+    height: 460px;
+    /* padding: 15px 0;   */
+}
+.clearfix{/*清除浮动*/
+    content: '';
+    display: block;
+    clear: both;
+}
+.left-content{/*左边*/
+    border: 1px solid orange;
+    width: 1060px;
+    height: 460px;
+    position: relative;
+}
+.leftTop-content{/*左上*/
+    border: 1px solid pink;
+    width: 1060px;
+    height: 200px;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.content1{
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    left: 0;
+    top:0;
+   background-color: pink;
+}
+.leftbottom-content{/*左下*/
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1060px;
+    height: 200px;
+    border: 1px solid #000;
+}
+
+.right-content{/*右边*/
+    border: 1px solid purple;
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 200px;
+    height: 420px;
+}
+
+
+
