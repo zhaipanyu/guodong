@@ -1,0 +1,414 @@
+{
+	"id": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+	"name": "gd_worksite_manage",
+	"description": "",
+	"order": [],
+	"folders": [{
+			"name": "project",
+			"description": "",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"order": [
+				"d5a5e4dd-9f43-f522-1847-24a2db9c0bd6",
+				"4d66ec2b-569e-8a63-e31b-3a656cd04fbf",
+				"c255f11a-b529-af55-5c5b-f8e77c07c02e",
+				"2e0d6d49-3b60-04f6-fa7b-0aeda3a3e1b8",
+				"6d691ae9-c34f-713c-4135-2669ba91a060",
+				"008504af-8712-45d8-8b58-92116babda95"
+			],
+			"owner": "2663171",
+			"folders_order": [],
+			"id": "bbb0caa6-998c-ea38-b13f-adff911a3ef4"
+		},
+		{
+			"name": "user",
+			"description": "",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"order": [
+				"78b62943-6fb9-1bb9-0ff7-74ab3c0a18d4",
+				"16759f13-8366-6a95-ce49-fc7d6c6106e0"
+			],
+			"owner": "2663171",
+			"folders_order": [],
+			"id": "49c63edd-07f2-41be-703d-9df195874c17"
+		}
+	],
+	"folders_order": [
+		"49c63edd-07f2-41be-703d-9df195874c17",
+		"bbb0caa6-998c-ea38-b13f-adff911a3ef4"
+	],
+	"timestamp": 1504248612520,
+	"owner": "2663171",
+	"public": false,
+	"requests": [{
+			"id": "008504af-8712-45d8-8b58-92116babda95",
+			"headers": "user-id: 2\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "2",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/projectLink_submit",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"data": [],
+			"dataMode": "raw",
+			"name": "projectLink_submit",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1504839550878,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbb0caa6-998c-ea38-b13f-adff911a3ef4",
+			"rawModeData": "{\"params\":{\n\t\t\t\"proj_code\":\"GDJZ2015003257LT\",\n\t\t\t\"links\":[\n\t\t\t\t\t{\n\t\t\t\t\t\t\"proj_link_id\":10564,\n\t\t\t\t\t\t\"proj_link_submit_user_id\":2,\n\t\t\t\t\t\t\"proj_link_submit_user_code\":\"2017090801\",\n\t\t\t\t\t\t\"proj_link_submit_user_name\":\"worker\",\n\t\t\t\t\t\t\"proj_link_describe\":\"地质勘探完成，请审核\",\n\t\t\t\t\t\t\"proj_link_pic\":[\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\"pic\":\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504847860076&di=159914f4db0544f610c4ec20090a6726&imgtype=0&src=http%3A%2F%2Fstatic.6yoo.com%2Fyuyan%2Fcms%2Fd%2Fqinsmoon%2Fdownloads%2Fwallpaper%2F2015-01-12%2F8b770b3be43bb97f60955b4a33b22e0c.jpg\",\n\t\t\t\t\t\t\t\t\t\"time\":1504837823,\n\t\t\t\t\t\t\t\t\t\"localtion\":{\n\t\t\t\t\t\t\t\t\t\t\"lon\":\"121.473173\",\n\t\t\t\t\t\t\t\t\t\t\"lat\":\"31.23418\",\n\t\t\t\t\t\t\t\t\t\t\"alt\":10\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\"dev_info\":\"model:LN901,IMEI:null,sysVersion:5.1\",\n\t\t\t\t\t\t\t\t\t\"user_name\":\"worker\",\n\t\t\t\t\t\t\t\t\t\"user_code\":\"2017090801\",\n\t\t\t\t\t\t\t\t\t\"user_id\":2\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n}"
+		},
+		{
+			"id": "16759f13-8366-6a95-ce49-fc7d6c6106e0",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [{
+				"key": "Content-Type",
+				"value": "application/json",
+				"description": "",
+				"enabled": true
+			}],
+			"url": "http://120.27.216.49:2112/api/user_login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"data": [],
+			"dataMode": "raw",
+			"name": "user_login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1504250486546,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "49c63edd-07f2-41be-703d-9df195874c17",
+			"rawModeData": "{\"params\":{\"user_name\":\"admin\",\"user_password\":\"12a7e3e4af441f4060d9f8acca10aabf\",\"dev_request_type\":\"user_web_token\"}}"
+		},
+		{
+			"id": "2e0d6d49-3b60-04f6-fa7b-0aeda3a3e1b8",
+			"headers": "user-id: 2\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "2",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/projectLink_get",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1504839588560,
+			"name": "projectLink_get",
+			"description": "",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"responses": [],
+			"rawModeData": "{\"params\":{\n\t\t\t\"proj_code\":\"GDJZ2015003257LT\"\n\t\t\t\n\t\t\t}\n}"
+		},
+		{
+			"id": "4d66ec2b-569e-8a63-e31b-3a656cd04fbf",
+			"headers": "user-id: 1\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "1",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/projectAllType_get",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"data": [],
+			"dataMode": "raw",
+			"name": "projectAllType_get",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1504580378338,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbb0caa6-998c-ea38-b13f-adff911a3ef4",
+			"rawModeData": "{\"params\":{\n\t\t\t\n\t\t\t}\n}"
+		},
+		{
+			"id": "6d691ae9-c34f-713c-4135-2669ba91a060",
+			"headers": "user-id: 1\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "1",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/project_import",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"data": [],
+			"dataMode": "raw",
+			"name": "project_import",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1504689044816,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbb0caa6-998c-ea38-b13f-adff911a3ef4",
+			"rawModeData": "{\"params\":{\n\t\t\t\"proj_id\":1\n\t\t\t}\n}"
+		},
+		{
+			"id": "78b62943-6fb9-1bb9-0ff7-74ab3c0a18d4",
+			"headers": "user-id: 1\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "1",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/userPassword_change",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1504249494536,
+			"name": "userPassword_change",
+			"description": "",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"responses": [],
+			"rawModeData": "{\"params\":{\"newPasswd\":\"12a7e3e4af441f4060d9f8acca10aabe\",\"oldPasswd\":\"12a7e3e4af441f4060d9f8acca10aabd\",\"dev_request_type\":\"user_web_token\"}}"
+		},
+		{
+			"id": "c255f11a-b529-af55-5c5b-f8e77c07c02e",
+			"headers": "user-id: 1\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "1",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/projectLink_gen",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"data": [],
+			"dataMode": "raw",
+			"name": "projectLink_gen",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1504599591847,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbb0caa6-998c-ea38-b13f-adff911a3ef4",
+			"rawModeData": "{\"params\":{\n\t\t\t\"proj_id\":1,\n\t\t\t\"proj_type_value\":0\n\t\t\t}\n}"
+		},
+		{
+			"id": "d5a5e4dd-9f43-f522-1847-24a2db9c0bd6",
+			"headers": "user-id: 2\ntime: 111111\ntoken: e34077705169ca2120d2d41f22b40641\nContent-Type: application/json\ndev-request-type: user_web\n",
+			"headerData": [{
+					"key": "user-id",
+					"value": "2",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "time",
+					"value": "111111",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "e34077705169ca2120d2d41f22b40641",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "dev-request-type",
+					"value": "user_web",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://120.27.216.49:2112/api/projectList_get",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1504773842594,
+			"name": "projectList_get",
+			"description": "",
+			"collectionId": "5bc4e332-2f9c-caa9-be82-89bf69ef4193",
+			"responses": [],
+			"rawModeData": "{\"params\":{\n\t\t\t\n\t\t\t\"limit\": 10,\n        \"offset\": 0\n\t\t\t}\n}"
+		}
+	]
+}

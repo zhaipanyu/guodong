@@ -1,0 +1,28 @@
+// {
+//     "proj_code": "GDJZ2017017859YD",项目编码     2
+//     "proj_lon": "120.30000",经度
+//     "proj_base_type": "业主不同意屋面植筋",植筋或基础形式    4
+//     "proj_station_type": "楼面",站型     3
+//     "proj_lat": "32.85091",纬度
+
+
+//     "proj_tower_height": "2米",塔高         6
+//     "proj_addr": "江苏省盐城市东台市新桥新村西小区",详细地址         7
+//     "proj_bu_name": "盐城事业一部",事业部 
+//     "proj_tower_type": "排气管",塔型      5
+//     "proj_import_time": 1504688851,导入时间  11
+//     "proj_name": "新桥新村（西）",项目名称              1
+//     "proj_establish_time": "2017-09-01"立项日期      8
+//      proj_status:0  项目状态              9
+//       proj_submit_time:0 提交时间             10
+//   },
+
+{
+    "error": 0,
+    "other": {
+        "count": 10,
+        "limit": 10,
+        "offset": 0,
+        "total": 44
+    }
+}

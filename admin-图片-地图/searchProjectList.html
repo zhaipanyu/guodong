@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>搜索筛选后的项目列表</title>
+
+    <!--基础css-->
+    <link href="lib/css/bootstrap.min.css" title="" rel="stylesheet" />
+    <!--基础整体样式-->
+    <link title="" href="src/css/style.css" rel="stylesheet" type="text/css" />
+    <!--基础换肤颜色-->
+    <link title="blue" href="src/css/skin.css" rel="stylesheet" type="text/css" />
+
+    <!--基础js-->
+    <script type="text/javascript" src="lib/js/jquery.min.js"></script>
+    <script src="lib/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!--表格css-->
+    <link rel="stylesheet" href="lib/css/bootstrap-table.css">
+
+    <!--表格js-->
+    <script src="lib/js/bootstrap-table.js"></script>
+    <!--些表格显示信息才会被设置成中文-->
+    <script src="lib/js/bootstrap-table-zh-CN.js"></script>
+
+    <!--扩展高级搜索-->
+    <!-- <script src="lib/js/bootstrap-table-toolbar.js"></script> -->
+    <!--表格js-->
+    <!-- <script src="src/js/table.js"></script> -->
+
+</head>
+
+
+<body>
+    <nav class="nav navbar-default navbar-mystyle navbar-fixed-top">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+     <span class="icon-bar"></span> 
+     <span class="icon-bar"></span> 
+     <span class="icon-bar"></span> 
+    </button>
+            <a class="navbar-brand mystyle-brand"><span class="glyphicon glyphicon-home"></span></a> </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="li-border"><a class="mystyle-color" href="#">管理控制台</a></li>
+                </li>
+            </ul>
+
+
+            <ul class="nav navbar-nav pull-right">
+
+                <li class="li-border dropdown"><a href="#" class="mystyle-color" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-search"></span> 搜索</a>
+                    <div class="dropdown-menu search-dropdown">
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                   <button type="button" class="btn btn-default">搜索</button>
+                </span>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="dropdown li-border">
+                    <a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">605875855@qq.com
+         <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="login.html">退出</a></li>
+                        <li><a href="">修改密码</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!--左侧-->
+    <div class="down-main">
+        <!--.left-full{ width:160px; display:block;}-->
+        <!--左侧整个区-->
+        <div class="left-main left-full">
+            <!--左侧带菜单区-->
+            <div class="subNavBox">
+                <!--第一组-->
+                <div class="sBox">
+                    <!--subNav:就是项目按钮栏-->
+                    <div class="subNav sublist-down">
+                        <!--lyphicon-chevron-down 箭头朝下按钮,第一个项目默认展开子模块,且箭头朝下-->
+                        <span class="title-icon glyphicon glyphicon-chevron-down"></span>
+                        <span class="sublist-title">项目管理</span>
+                    </div>
+                    <!--内容是否展开,默认第一组之后是展开-->
+                    <ul class="navContent">
+                        <li>
+                            <a href="#"><span class="sublist-icon glyphicon glyphicon-music"></span><span class="sub-title">项目列表</span></a></li>
+                        <li>
+                            <a href="projectList.html"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目派发</span></a></li>
+
+                    </ul>
+                </div>
+
+                <!--第二组-->
+                <div class="sBox">
+                    <div class="subNav sublist-up">
+                        <!--图标方向lyphicon-chevron-up 箭头朝上按钮-->
+                        <span class="title-icon glyphicon glyphicon-chevron-up"></span>
+                        <span class="sublist-title">施工管理</span></div>
+                    <!--内容是否展开,默认第二组之后是收起:style="display: none;-->
+                    <ul class="navContent" style="display: none;">
+                        <li>
+                            <a href="#"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">施工照片审核</span></a></li>
+                        <li>
+                            <a href="#"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">模施工照片确认</span></a></li>
+
+                    </ul>
+                </div>
+
+                <!--第三组-->
+                <div class="sBox">
+                    <div class="subNav sublist-up">
+                        <!--图标方向lyphicon-chevron-up 箭头朝上按钮-->
+                        <span class="title-icon glyphicon glyphicon-chevron-up"></span>
+                        <span class="sublist-title">项目三</span></div>
+                    <!--内容是否展开,默认第二组之后是收起-->
+                    <ul class="navContent" style="display: none;">
+                        <li>
+                            <a href="#"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">模块1</span></a></li>
+                        <li>
+                            <a href="#"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">模块2</span></a></li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <!--class=subNavBox-->
+        </div>
+
+        <!--右侧内容-->
+        <!--.right-full{ left:160px;}-->
+        <div class="right-product right-full">
+
+            <ol class="breadcrumb">
+                <li><a href="#">项目管理</a></li>
+                <li class="active">项目列表</li>
+            </ol>
+
+            <!--自定义搜索框toolbar-->
+            <div id="toolbar">
+                <div class="form-inline" role="form">
+                    <div class="form-group">
+                        <span>项目编码: </span>
+                        <input class="form-control" id="project-code" type="text" value="">
+                    </div>
+                    <button id="user-search" type="submit" class="btn btn-default glyphicon glyphicon-search">搜索</button>
+                </div>
+            </div>
+            <!--自定义搜索框toolbar-->
+
+
+            <!--通过设置远程的 url 如 url: 'data1.json' 来加载数据-->
+            <table id="loginLog-table"></table>
+
+        </div>
+        <!--.right-full-->
+
+
+        <script type="text/javascript">
+            //这是jQuery函数，是当文档载入完成的时候执行的，也就是说文档载入完成后执行
+            $(function () {
+                /*左侧导航栏显示隐藏功能*/
+                //subNav:就是项目按钮栏
+                $(".subNav").click(function () {
+                    /*如果是显示,点击会隐藏模块*/
+                    if ($(this).find("span:first-child").attr('class') ==
+                        "title-icon glyphicon glyphicon-chevron-down") {
+                        $(this).find("span:first-child").removeClass("glyphicon-chevron-down");
+                        $(this).find("span:first-child").addClass("glyphicon-chevron-up");
+                        $(this).removeClass("sublist-down");
+                        $(this).addClass("sublist-up");
+                    }
+                    /*如果是隐藏,点击会显示模块*/
+                    else {
+                        $(this).find("span:first-child").removeClass("glyphicon-chevron-up");
+                        $(this).find("span:first-child").addClass("glyphicon-chevron-down");
+                        $(this).removeClass("sublist-up");
+                        $(this).addClass("sublist-down");
+                    }
+
+                    /*当有一个项目的模块展开时,其他项目的模块要隐藏,还要把箭头的方向改过来.*/
+                    // $(this).parent().siblings().find("ul").css("display", "none");
+
+                    // 修改数字控制速度， slideUp(500)控制卷起速度
+                    $(this).next(".navContent").slideToggle(100).siblings(".navContent").slideUp(100);
+                })
+
+            })
+
+
+            $(document).ready(function () {
+
+                //数据处理
+                //重写上面
+                var queryParams = function (params) {
+                    var param = {
+                        // 请求第一页 offset:0  limit:10   
+                        //offset是limit的整数倍  ,请求第二页: offset:10 limit:10  
+                        //若offset+count=total，则表明已经没有数据了
+                        offset: Math.ceil(params.offset / params.limit) * 10,
+                        limit: params.limit,
+                        //传入搜索的关键词
+                        proj_code: localStorage.getItem('myProjectCodeValue')
+                    };
+                    return JSON.stringify({
+                        params: $.extend({
+                                limit: 10,
+                                offset: 0
+                            },
+                            param
+                        )
+                    });
+                }
+
+
+
+
+                var responseHandler = function (e) {
+                    console.log(e);
+                    if (e.result && e.result.length > 0) {
+
+                        return {
+                            "total": e.other.total,
+                            "rows": e.result,
+                            // "total": e.count
+                        };
+                    } else {
+                        return {
+                            "rows": [],
+                            "total": 0
+                        };
+                    }
+                }
+
+                //点击项目名跳转
+                var projectNameClick = function(value, row, index) {
+                    //获取这一行的proj_code项目编码
+                    // console.log('proj_code:' + row.proj_code);
+
+                    var html = '<a href="projectDetail.html' +'?listId='+row.proj_code +'">'+ value+ "</a>";
+                    // console.log('href:' + html);
+                    // href:<a href="projectDetail.html?listId=GDJZ2014001620LT">GDJZ2014001620LT</a>
+                    return html;
+                }
+
+                //格式化单元格内容，function(value, row, index), value：该cell本来的值，row：该行数据，index：该行序号（从0开始）
+                //处理提交时间
+                var projectSubmitTimeClick = function (value) {
+                    if (value === 0) {
+                        return '-';
+                    }
+                    var date = new Date(value);
+                    Y = date.getFullYear() + '-';
+                    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) +
+                        '-';
+                    D = date.getDate() + ' ';
+                    return (Y + M + D);
+                }
+                //处理导入时间
+                var projectImportTimeClick = function (value) {
+                    if (value === 0) {
+                        return '-';
+                    }
+                    var date = new Date(value);
+                    Y = date.getFullYear() + '-';
+                    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) +
+                        '-';
+                    D = date.getDate() + ' ';
+                    // var html = "<a href='#'>" + value + "</a>";
+                    return (Y + M + D);
+                }
+
+                //定义请求的方法
+
+                var columns = [{
+                        checkbox: true
+                    },
+                    {
+                        field: 'proj_name',
+                        title: '项目名称',
+                        align: 'center',
+                        formatter: projectNameClick, //自定义方法设置uid跳转链接
+                        width: 250
+                    }, {
+                        field: 'proj_code',
+                        title: '项目编码',
+                        align: 'center',
+                        sortable: false //本列不可以排序
+                    }, {
+                        field: 'proj_station_type',
+                        title: '站型',
+                        align: 'center'
+                    },
+                    {
+                        field: 'proj_base_type',
+                        title: '植筋或基础形式',
+                        align: 'center'
+                    },
+                    {
+                        field: 'proj_tower_type',
+                        title: '塔型',
+                        align: 'center'
+                    },
+                    {
+                        field: 'proj_tower_height',
+                        title: '塔高',
+                        align: 'center',
+                        width: 70
+                    },
+                    {
+                        field: 'proj_addr',
+                        title: '详细地址',
+                        align: 'center'
+                    },
+                    {
+                        field: 'proj_establish_time',
+                        title: '立项日期',
+                        align: 'center',
+                        width: 100
+                    },
+                    {
+                        field: 'proj_status',
+                        title: '项目状态',
+                        align: 'center'
+                    },
+                    {
+                        field: 'proj_submit_time',
+                        title: '提交时间',
+                        align: 'center',
+                        formatter: projectSubmitTimeClick,
+                        // valign:'middle'
+                        // halign:'center'
+                    },
+                    {
+                        field: 'proj_import_time',
+                        title: '导入时间',
+                        align: 'center',
+                        formatter: projectImportTimeClick,
+
+                    },
+
+
+                ];
+
+                $('#loginLog-table').empty();
+                $('#loginLog-table').bootstrapTable('destroy').bootstrapTable({
+                    url: 'http://120.27.216.49:2112/api/projectList_get', //url一般是请求后台的url地址,调用ajax获取数据。此处我用本地的json数据来填充表格。
+                    method: "post", //使用get请求到服务器获取数据
+                    ajaxOptions: { //添加请求头部信息方法
+                        headers: {
+                            'user-id': localStorage.getItem('myuserid'),
+                            'Content-Type': 'text/plain charset=UTF-8',
+                            'dev-request-type': 'user_web',
+                        },
+                    },
+                    dataType: "json",
+                    contentType: 'text/plain charset=UTF-8',
+                    toolbar: "#toolbar", //一个jQuery 选择器，指明自定义的toolbar 例如:#toolbar, .toolbar.
+                    // uniqueId: "id", //每一行的唯一标识，一般为主键列
+                    // height: document.body.clientHeight , //动态获取高度值，可以使表格自适应页面
+                    cache: false, // 不缓存
+                    striped: true, // 隔行加亮
+                    // queryParamsType: "limit", //设置为"undefined",可以获取pageNumber，pageSize，searchText，sortName，sortOrder 
+                    //设置为"limit",符合 RESTFul 格式的参数,可以获取limit, offset, search, sort, order 
+                    queryParams: queryParams,
+                    sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+                    // sortable: true,                     //是否启用排序;意味着整个表格都会排序
+                    // sortName: 'uid', // 设置默认排序为 name
+                    // sortOrder: "asc", //排序方式
+                    pagination: true, //是否显示分页（*）
+                    // search: true, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                    strictSearch: true,
+                    // detailView:true,//可以显示详细页面模式
+                    showColumns: true, //是否显示所有的列
+                    showRefresh: true, //是否显示刷新按钮
+                    showToggle: true, //是否显示详细视图和列表视图
+                    clickToSelect: true, //是否启用点击选中行
+                    minimumCountColumns: 2, //最少允许的列数 clickToSelect: true, //是否启用点击选中行
+                    pageNumber: 1, //初始化加载第一页，默认第一页
+                    pageSize: 10, //每页的记录行数（*）
+                    pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
+                    paginationPreText: "上一页",
+                    paginationNextText: "下一页",
+                    paginationFirstText: "First",
+                    paginationLastText: "Last",
+                    responseHandler: responseHandler, //处理返回的数据
+                    columns: columns,
+                    // dataAdvancedSearch:true,暂时没有
+                    // dataTdTable:advancedTable,
+                    onLoadSuccess: function (data) { //加载成功时执行
+                        console.log('success');
+                    },
+                    onLoadError: function (res) { //加载失败时执行
+                        console.log(res + 'error');
+                    }
+                }); //bootstrapTable方法结束
+
+
+
+            }); // $(document).ready结束
+
+
+            //自定义搜索
+            $('#user-search').click(function () {
+                var projectCodeValue = $('#project-code').val();
+
+            })
+        </script>
+</body>
+
+</html>
