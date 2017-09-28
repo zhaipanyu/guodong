@@ -1,0 +1,148 @@
+<!--用户编辑-->
+<template>
+    <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="姓名" prop="user_name">
+            <el-input v-model="form.user_name"></el-input>
+        </el-form-item>
+        <el-form-item label="公司" prop="user_company">
+            <el-input v-model="form.user_company"></el-input>
+        </el-form-item>
+        <el-form-item label="部门名称" prop="user_bu_name">
+            <el-input v-model="form.user_bu_name"></el-input>
+        </el-form-item>
+        <el-form-item label="人事编号" prop="user_number">
+            <el-input v-model="form.user_number"></el-input>
+        </el-form-item>
+        <el-form-item label="id" prop="user_id">
+            <el-input v-model="form.user_id"></el-input>
+        </el-form-item>
+        <el-form-item label="职位" prop="user_job">
+            <el-input v-model="form.user_job"></el-input>
+        </el-form-item>
+<<<<<<< .mine
+        <el-form-item label="权限"  :formatter="userRoleFormatter">
+            <el-input v-model="form.user_role"></el-input>
+=======
+        <el-form-item label="权限" prop=user_roler>
+            <el-select v-model="form.user_role" clearable>
+                <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                </el-option>
+            </el-select>
+>>>>>>> .r202
+        </el-form-item>
+
+        <el-form-item label="手机" prop="user_phone">
+            <el-input v-model="form.user_phone"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="user_mail">
+            <el-input v-model="form.user_mail"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="onSubmit">立即创建</el-button>
+            <el-button @click="resetForm('form')">重置</el-button>
+        </el-form-item>
+    </el-form>
+</template>
+<script>
+    import {checkRepeat} from '../../common/js/checkRepeat'
+    import {userRole} from '../../common/js/tableFilter'
+    import {email} from '../../common/js/regExp'
+    export default {
+        data() {
+            return {
+                options:userRole,
+                oldData:{},
+                form: {
+                    user_name:'',
+                    user_company:'',
+                    user_bu_name:'',
+                    user_number:'',
+                    user_id:'',
+                    user_job:'',
+                    user_roler:'',
+                    user_phone:'',
+                    user_mail:'',
+                },
+            rules:{
+                user_name:[],
+                user_company:[],
+                user_bu_name:[],
+                user_number:[],
+                user_id:[],
+                user_job:[],
+                user_roler:[],
+                user_phone:[{validator:(rule,value,callback)=>{
+                if(email.regexp.test(rule)){
+                    callback(new Error("格式不正确！"));
+                }else{
+                    callback();
+                }
+            }, trigger: 'blur'}],
+                user_mail:[],
+            }
+            }
+        },
+        methods: {
+            resetForm(form) {
+                this.$refs[form].resetFields();
+            },
+            onSubmit() {
+                this.$refs.form.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            this.editLoading = true;
+                            //NProgress.start();
+                            let _obj = Object.assign({}, this.editForm),
+                                para = checkRepeat(this.oldData,_obj);
+                            this.$axios('user_change',Object.assign(para,{'user_id':Number.parseInt(this.form.user_id)})).then(data => {
+                                this.editLoading = false;
+                                if(data.error===0){
+                                    //NProgress.done();
+                                    this.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                    this.$refs['editForm'].resetFields();
+                                    this.editFormVisible = false;
+                                    this.getUsers();
+                                } else {
+                                    this.$message({
+                                        message:data.result,
+                                        type:'error'
+                                    })
+                                }
+
+                            });
+                        });
+                    }
+                });
+<<<<<<< .mine
+            },
+            userRoleFormatter(form){
+                console.log('111');
+                console.log(form);
+                return userRole(form.user_role);
+=======
+>>>>>>> .r202
+            }
+        },
+        mounted(){
+            this.form = this.$route.params.obj;
+            this.oldData = Object.assign({},this.$route.params.obj);
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+

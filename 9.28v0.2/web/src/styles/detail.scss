@@ -1,0 +1,110 @@
+
+$wrapborder-color:#8391a5;//内容阴影的颜色
+$content-boxborder:1px solid $wrapborder-color;//内容框的边框样式
+$boxshadow-color:#ccc;//阴影色
+$content-boxshadow:0px 0px 1px $boxshadow-color; //内容框的box-show样式
+$section-fontfamily: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";//section字体样式
+$content-padding :10px; //内容padding
+$content-border-radius: 4px;//内容的边框圆角
+$updown-size:30px;//内容上下间距
+$leftright-size:30px;//内容左右间距
+section {
+  font-family:$section-fontfamily;
+  font-size: 16px;
+}
+/*顶部文字内容*/
+.top-title {
+  border: $content-boxborder;
+  box-shadow: $content-boxshadow;
+  padding: $content-padding $updown-size;
+  line-height: 2em;
+  margin-bottom: $updown-size;
+  border-radius: $content-border-radius;
+}
+
+/*轮播部分*/
+.img-wrap{/*UI*/
+  border: $content-boxborder;
+  box-shadow: $content-boxshadow;
+  padding: $content-padding;
+  line-height: 2em;
+  margin-bottom: $updown-size;
+  margin-top: 0;
+  border-radius: $content-border-radius;
+}
+/*提交人内容*/
+.img-title-wrap{
+  border:1px solid #ccc;
+  padding: $content-padding;
+  margin-bottom: 8px;
+  border-radius: $content-border-radius;
+}
+/*轮播*/
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+/*轮播*/
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+/*轮播*/
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
+}
+/*轮播左击*/
+.left {
+  top: 30%;
+  left: 20px;
+  padding: 40px;
+  background: url(../../assets/left-button.png) no-repeat ;/*左切换图*/
+}
+/*轮播左悬浮*/
+.left:hover{
+  transform: scale(1.2,1.2);
+  transition: all 0.2s;
+  z-index: 100;
+}
+/*轮播右击*/
+.right {
+  top: 30%;
+  right: 20px;
+  padding: 40px;
+  background: url(../../assets/right-button.png) no-repeat ;/*右切换图*/
+}
+/*轮播右悬浮*/
+.right:hover{
+  transform: scale(1.2,1.2);
+  transition: all 0.2s;
+  z-index: 100;
+}
+/**/
+ul#wrapper li {
+  display: inline-block;
+}
+/*审核表单*/
+.submit-content{
+  margin-top: 0px;
+  padding: $updown-size;
+  border:$content-boxborder;
+  box-shadow: $content-boxshadow;
+  border-radius: $content-border-radius;
+}
+/*提交内容*/
+.commit-form{
+  margin-left: -$leftright-size;
+
+}
+
+/*提交者*/
+.commitAuthor{
+  margin-left: -70px;
+}
+/*提交按钮*/
+.commit-button{
+  width:150px;
+  /* height: 40px; */
+}
