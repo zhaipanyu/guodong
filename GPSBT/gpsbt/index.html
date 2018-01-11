@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8' />
+	<title>GPS和BT定位演示系统</title>
+	<link type="text/css" rel="stylesheet" href="styles/default.css" media="screen" />
+</head>
+
+<body>
+	<div class="mac-number">
+		<label for="">蓝牙beacon Mac号:</label>
+		<input id="macInput" type="text" name="name">
+		<label for="">输入Mac号后再拖动下方信标</label>
+		<!-- <button class="createBlue">创建蓝牙信标</button>		 -->
+	</div>
+
+	<div id="container">
+		<!-- 图标 -->
+		<ul id="images">
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			<li>
+				<img alt="3dOcean" src="images/location.png" />
+			</li>
+			
+		</ul>
+		<div class="create-blue">
+			<p class="create-blue-p">"输入设备号和拖动信标后再点击创建蓝牙beacon"</p>
+			<input class="commen-input" type="button" name="button" value="点击创建蓝牙beacon位置" onclick="createBlue()" />
+		</div>
+		<div class="get-allBlue">
+			<input class="commen-input" type="button" name="button" value="点击获取所有蓝牙beacon" onclick="getAllblue()" />
+		</div>
+
+		<div class="get-devLoc">
+			<input class="commen-input" type="button" name="button" value="点击获取所有设备的信息" onclick="getDevLocation()" />
+		</div>
+
+		<!-- 百度地图 -->
+		<div id="baiduLocation">
+
+		</div>
+
+		
+	</div>
+	<!-- logo	 -->
+	<div class="logo">
+	</div>
+
+	<!-- title -->
+	<div class="title">
+	
+	</div>
+
+	<!-- <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script> -->
+	<script src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+	<!---->
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=LqUOHyuUwsHDzZpOTrmb4fSxx257S8zt&s=1"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+	<script src='js/jqueryui-core-drag.js'></script>
+	<script type="text/javascript">
+		//*发送数据到服务器
+		var wrap1 = function (url, params, fn) {
+			$.ajax({
+				headers: {
+					// 'token': token || '',
+					// 'time': _t || '',
+					// 'userId': i || '',
+					// 'Content-Type': 'application/x-www-form-urlencoded',
+					// 'Access-Control-Allow-Origin':'*',
+					'Content-Type': 'application/json'
+				},
+				processData: false,
+				type: 'post',
+				// url: 'http://www.gd-iot.net:970/api/' + url,
+				url: 'https://www.workingbao.com/gpsbtapi/' + url,
+
+				data: JSON.stringify({
+					params: params
+				}),
+
+				success: function (_data) {
+					// var data = JSON.parse(_data);
+					if (_data.error === 0) {
+						fn(data);
+					}
+
+				},
+				timeout: 20000
+			});
+		}
+
+		//请求方法
+		var wrap = function (url, params, fn) {
+			$.ajax({
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				processData: false,
+				type: 'post',
+				// url: 'http://www.gd-iot.net:970/api/' + url,
+				url: 'https://www.workingbao.com/gpsbtapi/' + url,
+
+				data: JSON.stringify({
+					params: params
+				}),
+
+				success: function (_data) {
+					// var data = JSON.parse(_data);
+					//if (data.error === 0) {
+					fn(_data);
+					// }
+
+				},
+				timeout: 20000
+			});
+		}
+
+		var imgs;
+		imgs = $("#images li");
+		var locationArrs = [];
+		var loacation = {};
+		var containerWidth = $('#container').width();
+		var containerHeight = $('#container').height();
+		//请求: 拿蓝色改变过的位置数组
+		var fn = function () {
+			var itemWidth = $('#images img').width();
+			var itemHeight = $('#images img').height();
+			//遍历imgs
+			for (var i = 0; i < imgs.length; i++) {
+				if (imgs[i].offsetLeft < containerWidth - itemWidth && imgs[i].offsetTop < containerHeight - itemHeight) {
+					loacation.offsetLeft = imgs[i].offsetLeft;
+					loacation.offsetTop = imgs[i].offsetTop;
+					locationArrs.push(loacation);
+				}
+			}
+			// console.log(locationArrs);
+		}
+
+		$(document).ready(function () {
+			// console.log(imgs);
+
+			setTimeout(() => {
+				fn()
+			}, 100);
+			// setInterval(fn, 500);
+			var drag = {};
+			//$('#images').append('<li id="instructions"><h4>网关</h4></li>');
+			imgs.draggable({
+				stack: {
+					group: '#images li',
+					min: 1
+				},
+				start: function () {
+					$this = $(this);
+					if ($this.attr('id') === 'instructions') {
+						$this.fadeOut().remove();
+					}
+					drag.startTime = new Date();
+					drag.startPos = $this.position();
+				}
+
+			});
+
+		});
+
+
+// -------------------------------------------------------------
+
+		//设置蓝牙网关位置
+		function createBlue() {
+			//创建前拿最后一次的数组
+			fn();
+			var macNumber = $("#macInput").val();
+			// console.log(macNumber)
+			if (macNumber.length < 1) {
+				alert('蓝牙beaconMac号为空');
+				console.log('Mac号为空');
+				return;
+			}
+
+			if (locationArrs.length < 1) {
+				console.log('请拖入新的信标')
+				alert('请拖入新的信标')
+				return;
+			}
+			//获取数组最后一个元素,即最后一次移动的图标
+			// console.log(locationArrs[locationArrs.length - 1])
+			var params = {
+				mac: macNumber,
+				pos: [locationArrs[locationArrs.length - 1].offsetLeft, locationArrs[locationArrs.length - 1].offsetTop]
+			};
+			// console.log(params);
+			//提交
+			wrap1('set_btgws_position', params
+				// 'mac': macNumber,
+				,
+				function (data) {
+					// console.log(data);
+					//拼接字符串
+				})
+		} //设置蓝牙网关位置
+
+
+
+// -------------------------------------------------------------
+
+		//获取所有蓝牙网关
+		var blueDevArr = [];
+		function getAllblue() {
+			wrap('get_all_btgws_position', {}, function (data) {
+				blueDevArr = data.btgws;
+				$('.blueIcon').remove();
+				// console.log(blueDevArr)
+				for (var i = 0; i < blueDevArr.length; i++) {
+
+					if (blueDevArr[i].pos[0] < 0) {
+						blueDevArr[i].pos[0] = 0;
+					} else if (blueDevArr[i].pos[0] > containerWidth) {
+						blueDevArr[i].pos[0] = containerWidth-40;
+					} else if (blueDevArr[i].pos[1] < 0) {
+						blueDevArr[i].pos[1] = 0;
+					} else if (blueDevArr[i].pos[1] > containerHeight) {
+						blueDevArr[i].pos[1] = containerHeight-40;
+					}
+					// console.log(blueDevArr[i].xy[0])
+					// console.log(blueDevArr[i].xy[1])
+					var devStr = '';
+					devStr +=
+						'<img class="blueIcon" src="images/location.png" style ="width:40px;height:40px; position:absolute; top: ' +
+						blueDevArr[i].pos[
+							1] +
+						'px; left:' + blueDevArr[i].pos[0] +
+						'px;  " title="' + blueDevArr[i].mac + '" />';
+					// return devStr;
+					// console.log(devStr);
+					$('#container').append(devStr);
+				}
+			})
+		}
+		var getAllblue1 = function getAllblue() {
+			wrap('get_all_btgws_position', {}, function (data) {
+				blueDevArr = data.btgws;
+				// console.log(blueDevArr)
+				 $('.blueIcon').remove();
+				for (var i = 0; i < blueDevArr.length; i++) {
+
+					if (blueDevArr[i].pos[0] < 0) {
+						blueDevArr[i].pos[0] = 0;
+					} else if (blueDevArr[i].pos[0] > containerWidth) {
+						blueDevArr[i].pos[0] = containerWidth-40;
+					} else if (blueDevArr[i].pos[1] < 0) {
+						blueDevArr[i].pos[1] = 0;
+					} else if (blueDevArr[i].pos[1] > containerHeight) {
+						blueDevArr[i].pos[1] = containerHeight-40;
+					}
+					// console.log(blueDevArr[i].xy[0])
+					// console.log(blueDevArr[i].xy[1])
+					var devStr = '';
+					devStr +=
+						'<img class="blueIcon" src="images/location.png" style ="width:40px;height:40px; position:absolute; top: ' +
+						blueDevArr[i].pos[
+							1] +
+						'px; left:' + blueDevArr[i].pos[0] +
+						'px;  " title="' + blueDevArr[i].mac + '" />';
+					// return devStr;
+					// console.log(devStr);
+					$('#container').append(devStr);
+				}
+			})
+		}
+		//20秒自动获取所有蓝牙becon
+		setInterval(getAllblue1,1000)
+// -------------------------------------------------------------
+
+
+
+		//#获取所有设备的信息:可移动（包含位置）红色图标
+		var devArr = [];
+		function getDevLocation() {
+			wrap('get_all_dev_info', {}, function (data) {
+				$('.devIcon').remove();
+				devArr = data.devices;
+				// console.log(devArr)
+				for (var i = 0; i < devArr.length; i++) {
+
+					if (devArr[i].xy[0] < 0) {
+						devArr[i].xy[0] = 0;
+					} else if (devArr[i].xy[0] > containerWidth) {
+						devArr[i].xy[0] = containerWidth-40;
+					} else if (devArr[i].xy[1] < 0) {
+						devArr[i].xy[1] = 0;
+					} else if (devArr[i].xy[1] > containerHeight) {
+						devArr[i].xy[1] = containerHeight-40;
+					}
+					// console.log(devArr[i].xy[0])
+					// console.log(devArr[i].xy[1])
+					var devStr = '';
+					devStr += '<img class="devIcon" src="images/icon2.png" style ="width:30px;height:40px; position:absolute; top: ' +
+						devArr[i].xy[1] +
+						'px; left:' + devArr[i].xy[0] +
+						'px;  "  title="' + devArr[i].dev_eui + '" />';
+					// return devStr;
+					// console.log(devStr);
+					$('#container').append(devStr);
+				}
+			})
+		}
+		
+		var getDevLocation1 = function () {
+			wrap('get_all_dev_info', {}, function (data) {
+				$('.devIcon').remove();
+				devArr = data.devices;
+				// console.log(devArr)
+				for (var i = 0; i < devArr.length; i++) {
+
+					if (devArr[i].xy[0] < 0) {
+						devArr[i].xy[0] = 0;
+					} else if (devArr[i].xy[0] > containerWidth) {
+						devArr[i].xy[0] = containerWidth-40;
+					} else if (devArr[i].xy[1] < 0) {
+						devArr[i].xy[1] = 0;
+					} else if (devArr[i].xy[1] > containerHeight) {
+						devArr[i].xy[1] = containerHeight-40;
+					}
+					// console.log(devArr[i].xy[0])
+					// console.log(devArr[i].xy[1])
+					var devStr = '';
+					devStr += '<img class="devIcon" src="images/icon2.png" style ="width:30px;height:40px; position:absolute; top: ' +
+						devArr[i].xy[1] +
+						'px; left:' + devArr[i].xy[0] +
+						'px;  "  title="' + devArr[i].dev_eui + '" />';
+					// return devStr;
+					// console.log(devStr);
+					$('#container').append(devStr);
+				}
+			})
+		}
+		//20秒自动获取所有蓝牙becon
+		setInterval(getDevLocation1,1000);
+
+
+
+// -------------------------------------------------------------
+
+		//百度地图
+		var baiduMap = function () {
+			var map = new BMap.Map("baiduLocation");
+			var point = new BMap.Point(121.4731895328, 31.2340329624);
+			map.centerAndZoom(point, 12);
+			map.enableScrollWheelZoom();
+			var myGeo = new BMap.Geocoder();
+			// myGeo.getPoint([], function (point) {
+                // if (point) {
+                    var address = new BMap.Point(121.4731895328,  31.2340329624);
+                    addMarker(address);
+            //     }
+            // });
+			// 编写自定义函数,创建标注
+            function addMarker(point) {
+                //添加标识
+                var myIcon = new BMap.Icon('./images/icon1.png', new BMap.Size(50, 50)),
+                    marker = new BMap.Marker(point, {
+                        icon: myIcon
+                    });
+                map.addOverlay(marker);
+
+            }
+		}
+		baiduMap();
+
+
+
+// -------------------------------------------------------------
+		//设置图标的位置
+		$(window).load(function () {
+			$w = $(window);
+			imgs.css({
+				position: 'absolute',
+				left: 587,
+				top: 70
+			});
+
+		}); //*/
+	</script>
+</body>
+
+</html>

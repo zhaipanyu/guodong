@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监控展示</title>
+    <style>
+        body,
+        li,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: url(./images/background.png) no-repeat 0 0;
+        }
+        
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .layout{
+            position: relative;
+        }
+        .clearFix {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .header {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            height: 130px;
+            background: url(./images/header-img.png) no-repeat 0 0;
+            background-size: cover;
+            /* background-color: rgb(215, 215, 233); */
+        }
+
+        .content {
+            width: 1430px;
+            height: 380px;
+            margin: auto;
+            margin-bottom: 60px;
+            position: relative;
+            /* background-color: rgb(219, 125, 145); */
+        }
+
+        .content-left {
+            /* background-color: rgb(146, 102, 36); */
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 480px;
+            width: 700px;
+        }
+
+        .content-left .data-top {
+            /*节点数*/
+            width: 700px;
+            height: 80px;
+            line-height: 80px;
+            background: url(./images/激活节点背景.png) no-repeat;
+            background-size: contain;
+            /* background-color: rgb(105, 107, 212); */
+        }
+
+        .data-top .data-label1 {
+            margin-left: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(228, 102, 56);
+        }
+
+        .data-top #data-num1 {
+            margin-left: 10px;
+            font-size: 23px;
+            color: rgb(255, 255, 255);
+        }
+
+        .data-top .data-label2 {
+            margin-left: 215px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(35, 227, 208);
+        }
+
+        .data-num2wrap {
+            margin-left: 10px;
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+        }
+
+        .data-top #data-num2 {
+            margin-left: 10px;
+            font-size: 22px;
+            color: rgb(255, 255, 255);
+        }
+
+        .content-left .data-ring {
+            /*环形整体*/
+            margin-top: 50px;
+            /* background-color: rgb(77, 173, 165); */
+            position: relative;
+            height: 380px;
+        }
+
+        .leftEchart-bgimage {
+            position: relative;
+            width: 340px;
+            height: 250px;
+            /*echarts背景图*/
+            background: url(./images/网关在线背景.png) no-repeat;
+            background-size: contain;
+            /* background-color: rgb(77, 173, 82); */
+        }
+
+        .gateway-icon {
+            position: absolute;
+            top: -40px;
+            left: 0px;
+            /*网关图标*/
+            background: url(./images/gwInline.png) no-repeat;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+        }
+
+        .gateway-title {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            width: 120px;
+            /*网关标题*/
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .block1-wrap {
+            /*环形下面的左边小方块*/
+            position: absolute;
+            top: 60px;
+            left: 5px;
+        }
+
+        .online-block1 {
+            /* position: absolute;
+            top: 10px; */
+            display: inline-block;
+            width: 30px;
+            height: 15px;
+            background: #faf529;
+        }
+
+        .online-blocktext1 {
+            color: white;
+            font-size: 15px;
+        }
+
+        .online-block2 {
+            display: inline-block;
+            width: 30px;
+            height: 15px;
+            background: #1073f8;
+        }
+
+        .online-blocktext2 {
+            color: white;
+            font-size: 15px;
+        }
+
+        .content-left #ring-left {
+            position: absolute;
+            /* left: 0; */
+            top: 40px;
+            /*环形1*/
+            width: 340px;
+            height: 250px;
+            /* background-color: rgb(119, 77, 173); */
+        }
+
+        .rightEchart-bgimage {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 340px;
+            height: 250px;
+            /*echarts背景图*/
+            background: url(./images/网关在线背景.png) no-repeat;
+            background-size: contain;
+            /* background-color: rgb(234, 236, 100); */
+        }
+
+        .data-ring .node-icon {
+            /*节点图标*/
+            background: url(./images/nodeActive.png) no-repeat;
+            position: absolute;
+            top: -38px;
+            left: 0px;
+            /*网关图标*/
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+        }
+
+        .data-ring .node-title {
+            /*节点标题*/
+            position: absolute;
+            top: -32px;
+            left: 50px;
+            width: 120px;
+            /*网关标题*/
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .node-wrap {
+            /*环形下面右边小方块*/
+            position: absolute;
+            top: 20px;
+            left: 5px;
+        }
+
+        .node-block1 {
+            display: inline-block;
+            width: 30px;
+            height: 15px;
+            background: #ffc851
+        }
+
+        .node-blocktext1 {
+            display: block;
+            color: white;
+            font-size: 15px;
+        }
+
+        .node-block2 {
+            display: block;
+            width: 30px;
+            height: 15px;
+            background: #0fe5ec;
+        }
+
+        .node-blocktext2 {
+            display: block;
+            color: white;
+            font-size: 15px;
+        }
+
+        .content-left #ring-right {
+            /*环形2*/
+            position: absolute;
+            top: 0px;
+            position: absolute;
+            width: 340px;
+            height: 250px;
+
+            /* background-color: rgb(119, 77, 173); */
+        }
+
+
+        #content-right {
+            /*地图*/
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 375px;
+            width: 700px;
+            margin-left: 30px;
+            /* background: url(./images/.png) no-repeat; */
+            background-size: contain;
+            background-color: rgb(69, 123, 204);
+        }
+        .footer-title{
+            width: 1430px;
+            /* height: 200px; */
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .footer-title .footer-icon{
+            position: absolute;
+            background: url(./images/最近的数据.png) no-repeat;
+            top: -11px;
+            left: 0px;
+            /*网关图标*/
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+        }
+        .footer-title .footer-title{
+            margin-left: 50px;
+            /* margin-bottom: 3px; */
+            width: 120px;
+            /*网关标题*/
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        .footer {
+            /*底部表格*/
+            position: relative;
+            width: 1430px;
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            background: url(./images/最近的数据背景02.png) no-repeat;
+            background-size: contain;
+            /* background-color: rgb(63, 21, 68); */
+        }
+
+        .table thead {
+            /* background: url(./images/最近的数据背景01.png) no-repeat ; */
+            background: rgba(9, 158, 199, 0.9);
+        }
+
+        .table th {
+            /* color: rgba(235, 229, 229, 0.966); */
+            color: white;
+        }
+
+        .table td {
+            /* color: rgba(235, 229, 229, 0.966);
+             */
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="header"></div>
+        <div class="content">
+            <div class="content-left">
+                <div class="data-top">
+                    <!-- <h2 class="timer count-title" id="count-number" data-to="561" data-speed="1500" style="color:white"></h2>
+                    <h2 class="timer count-title" id="count-number" data-to="17870" data-speed="1500" style="color:white"></h2> -->
+                    <span class="data-label1 ">激活节点数:</span>
+                    <span class="timer count-title" id="data-num1 count-number" data-to="" data-speed="1000" style="margin-left: 10px;color:white; font-size: 23px"></span>
+                    <span class="data-label2">数据包总数:</span>
+                    <!-- <span class="data-num2wrap">     -->
+                    <span class="timer2 count-title" id="data-num2 count-number2" data-to2="" data-speed="1000" style="margin-left: 10px;color:white; font-size: 23px"></span>
+                    <!-- </span> -->
+                </div>
+
+                <div class="data-ring">
+                    <div class="leftEchart-bgimage">
+                        <apan class="gateway-icon">
+                            </span>
+                            <span class="gateway-title">网关在线占比</span>
+                            <span class="block1-wrap">
+                                <span class="online-block1"></span>
+                                <span class="online-blocktext1">在线</span>
+                                <!--环形下面的小方块和文字-->
+                                <span class="online-block2"></span>
+                                <span class="online-blocktext2">离线</span>
+                            </span>
+                            <div id="ring-left"></div>
+                    </div>
+
+                    <div class="rightEchart-bgimage">
+                        <span class="node-icon"></span>
+                        <span class="node-title">节点激活占比</span>
+                        <span class="node-wrap">
+                            <span class="node-block1"></span>
+                            <span class="node-blocktext1">激活</span>
+                            <!--环形下面的小方块和文字-->
+                            <span class="node-block2"></span>
+                            <span class="node-blocktext2">未激活</span>
+                        </span>
+                        <div id="ring-right"></div>
+                    </div>
+                </div>
+                <!--class="data-ring"-->
+            </div>
+            <!--class="content-left"-->
+            <div id="content-right"></div>
+            <!--id="content-right"-->
+        </div>
+        <!--class="content"-->
+        <div class="footer-title">
+            <span class="footer-icon"></span>
+            <span class="footer-title">节点激活占比</span>
+        </div>
+        <div class="footer">
+
+            <!-- <table class="table">
+                <thead>
+                    <tr>
+                        <th>设备ID</th>
+                        <th> 网关ID</th>
+                        <th> SNR</th>
+                        <th> RSSI</th>
+                        <th> fcntUp</th>
+                        <th> SeqDn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+
+                    </tr>
+
+                </tbody>
+            </table> -->
+        </div>
+        <!--class="footer"-->
+    </div>
+</body>
+<script src='jquery.js'></script>
+<script src="numberChange.js"></script>
+<script src="numberChange2.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.8.5/echarts-en.common.min.js"></script>
+<!---->
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=LqUOHyuUwsHDzZpOTrmb4fSxx257S8zt&s=1"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<script>
+    //方法
+    var wrap = function (url, fn) {
+        $.ajax({
+            headers: {
+                // 'token': token || '',
+                // 'time': _t || '',
+                // 'userId': i || '',
+                // 'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            processData: false,
+            type: 'post',
+            // url: 'http://www.gd-iot.net:970/api/' + url,
+            url: 'https://www.workingbao.com:442/api/' + url,
+            beforeSend: function () {
+                $('.loading').show();
+            },
+            complete: function () {
+                $('.loading').hide();
+            },
+            data: JSON.stringify({
+                params: {
+                    limit: 10,
+                    offset: 0
+                }
+            }),
+            error: function (data) {
+                popInfo('warning-info', error[data.error]);
+            },
+            success: function (_data) {
+                var data = JSON.parse(_data);
+                if (data.error === 0) {
+                    fn(data);
+                } else {
+                    popInfo('alert-warning', error[data.error - 10000]);
+                }
+            },
+            timeout: 20000
+        });
+    }
+    // //调用方法:定时刷新滚动数字
+    // wrap('static_device_info_query', function (data) {
+
+    // })
+
+    //调用方法:圆环1
+    wrap('Gateway_GetAllNumber', function (data) { //环1:在线网关数
+        var gatewayTotal = data.result.total; //总网关数
+        var gatewayOnline = data.result.totalOnline; //在线网关数
+        var gatewayOutline = gatewayTotal - gatewayOnline //离线网关数
+        var percent1 = ((gatewayOnline / gatewayTotal) * 100).toFixed(2) + "%"; //在线百分比
+        var percent2 = ((gatewayOutline / gatewayTotal) * 100).toFixed(2) + "%"; //离线百分比
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('ring-left'));
+        option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "数量: {c}"
+            },
+            color: ['#faf529', '#1073f8'],
+            legend: {
+                orient: 'horizontal',
+                y: 'bottom',
+                data: ["在线", "离线"]
+            },
+            series: [{
+                // selected:true,
+                name: '访问来源',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [{
+                        value: gatewayOnline,
+                        name: percent1,
+                        // selected:true
+                    },
+                    {
+                        value: gatewayOutline,
+                        name: percent2
+                    }
+                ]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+    })
+
+
+    //调用方法:圆环2
+    wrap('static_device_info_query', function (data) { //环2:节点激活占比
+        var nodeOnline = data.dev_online; //激活节点数
+        localStorage.setItem("number", nodeOnline); //保存节点数
+
+        var dataBaoTotal = data.msg_total; //数据包总数
+        localStorage.setItem("number2", dataBaoTotal); //保存数据包总数
+
+        var devTotal = data.dev_total; //设备总数
+        var nodeOut = devTotal - nodeOnline;
+        var percent3 = ((nodeOnline / devTotal) * 100).toFixed(2) + "%"; //激活百分比
+        var percent4 = ((nodeOut / devTotal) * 100).toFixed(2) + "%"; //离线百分比
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('ring-right'));
+        option1 = {
+            tooltip: {
+                trigger: 'item',
+                // formatter: "数量(百分比) <br/> {c} ({d}%)"
+                formatter: "数量: {c}"
+            },
+            color: ['#ffc851', '#0fe5ec'],
+            legend: {
+                orient: 'vertical',
+                x: 'left',
+            },
+            series: [{
+                // selected:true,
+                name: '访问来源',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: true,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [{
+                        value: nodeOnline,
+                        name: percent3,
+                        // selected:true
+                    },
+                    {
+                        value: nodeOut,
+                        name: percent4
+                    }
+                ]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(option1);
+
+        //过一秒刷新一次界面,获取滚动数字
+        // var refreshWindow = function() {
+        //     location.reload()//刷新当前页面.
+        // }
+        // setTimeout(refreshWindow, 500);
+    })
+
+    //定时刷新数据包总数
+    //     var xxFn = function () {
+    //         wrap('static_device_info_query', function (data) { //环2:节点激活占比
+    //         var dataBaoTotal = data.msg_total; //数据包总数
+    //         localStorage.setItem("number2", dataBaoTotal);//保存数据包总数
+
+    //         //清空再重绘
+    //         var numberUpdateStr = '';
+    //         numberUpdateStr += '<span class="timer2 count-title" id="data-num2 count-number2" data-to2="" data-speed="1500" style="margin-left: 10px;color:white; font-size: 18px"></span>';
+
+    //         $('.data-num2wrap').empty();
+    //             setTimeout(function () {
+    //                 $('.data-num2wrap').append(numberUpdateStr);
+    //                 $('data-num2').text(dataBaoTotal);
+    //             }, 400);
+    //         })
+    //    }
+    //    setInterval(xxFn,3000);
+
+    //地图
+    wrap('static_gateway_distribute_getList', function (data) {
+        // console.log(data);
+        // 百度地图API功能
+        var map = new BMap.Map("content-right");
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
+        map.enableScrollWheelZoom();
+        var myGeo = new BMap.Geocoder();
+        var MAX = data.result.length;
+        var arr1 = data.result;
+        var markers = [];
+        var proviceArray = [];
+        var gatewaycountArray = [];
+        for (let i = 0; i < MAX; i++) {
+            proviceArray.push(arr1[i].provice);
+            gatewaycountArray.push(arr1[i].gatewaycount);
+        }
+        // console.log(proviceArray);
+        // console.log(gatewaycountArray);
+        //省份转坐标
+        for (let i = 0; i < MAX; i++) {
+            var add = proviceArray[i];
+            myGeo.getPoint(add, function (point) {
+                if (point) {
+                    var address = new BMap.Point(point.lng, point.lat);
+                    addMarker(address);
+                }
+            });
+            // 编写自定义函数,创建标注
+            function addMarker(point) {
+                //添加标识
+                var myIcon = new BMap.Icon('./images/mapicon.png', new BMap.Size(50, 50)),
+                    marker = new BMap.Marker(point, {
+                        icon: myIcon
+                    });
+                map.addOverlay(marker);
+                //图标显示数字
+                var title = '31';
+                var title = gatewaycountArray[i];
+                var label = new BMap.Label(title, {
+                    offset: new BMap.Size(19, 15)
+                });
+                label.setStyle({
+                    backgroundColor: 'transparent',
+                    color: '#002869',
+                    borderColor: 'transparent',
+                    fontSize: "18px", //数字大小
+                    lineHeight: "18px",
+                    // border: '1px solid red',
+                    borderRadius: '50%',
+                    fontFamily: "微软雅黑"
+                });
+                marker.setLabel(label);
+
+            }
+        }
+    })
+
+    //表格方法
+    var wrap1 = function (url, fn) {
+        $.ajax({
+            headers: {
+
+                // 'token': token || '',
+                // 'time': _t || '',
+                // 'userId': i || '',
+                // 'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            processData: false,
+            type: 'post',
+            // url: 'http://www.gd-iot.net:970/api/' + url,
+            url: 'https://www.workingbao.com:442/api/' + url,
+            beforeSend: function () {
+                $('.loading').show();
+            },
+            complete: function () {
+                $('.loading').hide();
+            },
+            data: JSON.stringify({
+                params: {
+                    user_id: 2,
+                    limit: 4,
+                    offset: 0,
+
+                }
+            }),
+            error: function (data) {
+                popInfo('warning-info', error[data.error]);
+            },
+            success: function (_data) {
+                var data = JSON.parse(_data);
+                if (data.error === 0) {
+                    fn(data);
+                } else {
+                    popInfo('alert-warning', error[data.error - 10000]);
+                }
+            },
+            timeout: 20000
+        });
+    }
+    //底部表格Node_GetDataList
+    var tableListFn = function () {
+        wrap1('Node_GetDataList', function (data) {
+            // console.log(data);
+            //数组
+            var tableDataOneArr = data.result[0];
+            var tableDataTwoArr = data.result[1];
+            var tableDataThreeArr = data.result[2];
+            var tableDataFourArr = data.result[3];
+            //拼接字符串
+            var tableDataStr = '';
+            tableDataStr += '<table class="table ">';
+            tableDataStr += '    <thead>';
+            tableDataStr += '<tr>';
+            tableDataStr += '<th>设备ID</th>';
+            tableDataStr += '<th> 网关ID</th>';
+            tableDataStr += '<th> SNR</th>';
+            tableDataStr += '<th> RSSI</th>';
+            tableDataStr += '<th> fcntUp</th>';
+            tableDataStr += '<th> SeqDn</th>';
+            tableDataStr += '</tr>';
+            tableDataStr += ' </thead>';
+            tableDataStr += '<tbody>';
+            tableDataStr += '<tr>'; //1
+            tableDataStr += '<td>' + tableDataOneArr.devEUI + '</td>';
+            tableDataStr += '<td>' + tableDataOneArr.gw_macs + '</td>';
+            tableDataStr += '<td>' + tableDataOneArr.snr + '</td>';
+            tableDataStr += ' <td>' + tableDataOneArr.rssi + '</td>';
+            tableDataStr += ' <td>' + tableDataOneArr.fcnt_up_node + '</td>';
+            tableDataStr += ' <td>' + tableDataOneArr.fcnt_down + '</td>';
+            tableDataStr += ' </tr>';
+            tableDataStr += '<tr>'; //2
+            tableDataStr += '<td>' + tableDataTwoArr.devEUI + '</td>';
+            tableDataStr += '<td>' + tableDataTwoArr.gw_macs + '</td>';
+            tableDataStr += '<td>' + tableDataTwoArr.snr + '</td>';
+            tableDataStr += ' <td>' + tableDataTwoArr.rssi + '</td>';
+            tableDataStr += ' <td>' + tableDataTwoArr.fcnt_up_node + '</td>';
+            tableDataStr += ' <td>' + tableDataTwoArr.fcnt_down + '</td>';
+            tableDataStr += ' </tr>';
+            tableDataStr += '<tr>'; //3
+            tableDataStr += '<td>' + tableDataThreeArr.devEUI + '</td>';
+            tableDataStr += '<td>' + tableDataThreeArr.gw_macs + '</td>';
+            tableDataStr += '<td>' + tableDataThreeArr.snr + '</td>';
+            tableDataStr += ' <td>' + tableDataThreeArr.rssi + '</td>';
+            tableDataStr += ' <td>' + tableDataThreeArr.fcnt_up_node + '</td>';
+            tableDataStr += ' <td>' + tableDataThreeArr.fcnt_down + '</td>';
+            tableDataStr += ' </tr>';
+            tableDataStr += '<tr>'; //4
+            tableDataStr += '<td>' + tableDataFourArr.devEUI + '</td>';
+            tableDataStr += '<td>' + tableDataFourArr.gw_macs + '</td>';
+            tableDataStr += '<td>' + tableDataFourArr.snr + '</td>';
+            tableDataStr += ' <td>' + tableDataFourArr.rssi + '</td>';
+            tableDataStr += ' <td>' + tableDataFourArr.fcnt_up_node + '</td>';
+            tableDataStr += ' <td>' + tableDataFourArr.fcnt_down + '</td>';
+            tableDataStr += ' </tr>';
+            tableDataStr += '</tbody>';
+            tableDataStr += '</table>';
+            //拼接
+            $('.footer').empty();
+            setTimeout(function () {
+                $('.footer').append(tableDataStr);
+            }, 400);
+        })
+    }
+    tableListFn();
+    //加上
+
+    setInterval(tableListFn, 15000);
+
+//   var refreshWindow = function() {
+//       window.location.reload()//刷新当前页面.
+//   }
+//     setTimeout(refreshWindow, 500);
+//     window.clearTimeout();
+</script>
+
+</html>

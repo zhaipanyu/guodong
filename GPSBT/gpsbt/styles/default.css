@@ -1,0 +1,124 @@
+/* Meyer's Reset */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, font, img, small, strong, dl, dt, dd, ol, ul, li
+{ margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+/* remember to define focus styles! */
+:focus { outline: 0; }
+body { line-height: 1; color: black; background: white; }
+ol, ul { list-style: none; }
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+/* END Meyer's Reset */
+body{
+	font:13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+	color: white;
+	background: #000;
+}
+h1 { font-size: 30px; }
+#container {
+	background: url("../images/back.png") no-repeat;
+    width: 577px;
+    height: 780px;
+	border: 1px solid #ccc;
+	position: relative;
+	/* color: white; */
+}
+.mac-number{
+	position: absolute;
+	top:10.22px;
+	left: 587px;
+}
+.create-blue{
+	position: absolute;
+	top:140px;
+	left: 587px;
+	width: 200px;
+	/* border: 1px solid #ccc; */
+}
+
+/* input通用样式 */
+.commen-input{
+	font-size: 14px;
+	/* background: #ccc; */
+}
+/* .createBlue{
+	padding: 10px;
+	border-radius: 5px;
+	background: rgb(102, 172, 230);
+	color: white;
+}
+.createBlue:hover{
+	color: red;
+	background: rgb(102, 172, 230);
+} */
+.get-allBlue{
+	position: absolute;
+	top:220px;
+	left: 587px;
+	width: 200px;
+}
+/* 蓝牙网关图标 */
+.blueIcon{
+	/* background: url("../images/location.png") no-repeat; */
+	width: 40px;
+	height: 40px;
+	border: 0;
+}
+
+.get-devLoc{
+	position: absolute;
+	top:260px;
+	left: 587px;
+	width: 200px;
+}
+/* 红色图标 */
+.devIcon{
+	/* background: url("../images/icon2.png") no-repeat; */
+	width: 30px;
+	height: 40px;
+	border: 0;
+}
+#images li { 
+	float:left;
+}
+#images img{ 
+	width: 40px;
+	height: 40px;
+}
+
+/* 百度地图 */
+#baiduLocation{
+	/* 577  780 */
+	position: absolute;
+	left: 600px;
+	bottom: 0px;
+	width: 540px;
+	height: 400px;
+	border: 1px solid #ccc;
+}
+
+/* logo */
+.logo{
+	/* display: none; */
+	position: absolute;
+	right: 30px;
+	top: 50px;
+	width: 300px;
+	height: 95px;
+	background: url("../images/logo.png") no-repeat;
+	/* border: 1px solid #ccc; */
+}
+.title{
+	position: absolute;
+	left: 50%;
+	transform:translateX(-50%); 
+	bottom: 10px;
+	width: 700px;
+	height: 80px;
+
+	background: url("../images/title.png") no-repeat;
+	/* border: 1px solid #ccc; */
+}
+

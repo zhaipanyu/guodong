@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="frameCartoon.js"></script>
+    <title>disuo</title>
+    <style>
+        body {
+            background-color: rgb(51, 84, 136);
+            /* background: url('bg.png'); */
+        }
+
+        .wrap {
+            width: 500px;
+            height: 30px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wrap .title {
+            width: 500px;
+            height: 40px;
+            text-align: center;
+            background-color: rgba(1, 1, 1, 0.6);
+            font-size: 20px;
+            line-height: 40px;
+            color: white;
+            border-bottom: 4px solid #ccc;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+
+        .content {
+            margin-top: 100px;
+            width: 500px;
+            height: 404px;
+            position: relative;
+            background-color: rgb(72, 98, 139);
+            border-radius: 8px;
+            /* z-index: 2;
+            transition: all .4s; */
+        }
+        .content:hover{
+            /* transform: scale(1.2,1.2); */
+            
+        }
+
+        .img-content {
+            width: 100%;
+            height: 300px;
+            /* border-bottom: 4px solid greenyellow; */
+            position: relative;
+        }
+
+        .img-content .img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+             border-radius: 8px;
+            /* background: pink; */
+        }
+
+        .button-content {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .left-button {
+
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            background: url("on.png")no-repeat 0,0;
+            outline:none;
+        }
+
+        .right-button {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+           
+            background: url("off.png") no-repeat 0,0;
+            outline:none;
+        }
+        button{
+            border-style: none;
+        }
+        #line{
+            width: 100%;
+            height: 4px;
+            background-color: greenyellow;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="title">地锁演示</div>
+        <div class="content">
+            <div class="img-content">
+                <div class="img" id="demo3" ></div>
+            </div>
+            <div id="line"></div>
+            <div class="button-content">
+                <button class="right-button" id="start"></button>
+                <!--开锁-->
+                <button class="left-button" id="off"></button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var frameCartoon3 = new FrameCartoon({
+            el: '#demo3',
+            //帧数
+            frameNum: 6,
+            //速度
+            framerate: 5,
+            url: '3.png',
+            // url:'http://ww4.sinaimg.cn/large/0060lm7Tly1fjat1akrukj318c070q8o.jpg',
+            direction: 'horizontal',
+            //重复次数
+            iteration: 1
+        });
+
+        document.querySelector('#start').onclick = function () {
+            frameCartoon3.start();
+            document.getElementById('line').style.backgroundColor = 'red'; 
+        }
+
+        
+        document.querySelector('#off').onclick = function () {
+            frameCartoon3.off();
+            document.getElementById('line').style.backgroundColor = 'greenyellow'; 
+
+        }
+    </script>
+</body>
+
+
+
+</html>
